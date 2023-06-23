@@ -5,9 +5,13 @@ using UnityEngine;
 
 namespace Managers
 {
+
     [DisallowMultipleComponent]
     public class GameManager : MonoBehaviour
     {
+
+        // References to application managers
+        public Managers.SceneManager sceneManager = null;
 
 
 
