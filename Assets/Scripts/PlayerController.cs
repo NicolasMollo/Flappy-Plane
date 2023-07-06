@@ -31,6 +31,7 @@ namespace Controllers
 
         private bool jumpButtonIsPressed = false;
         private Vector3 startPosition = Vector3.zero;
+        private const string TAG = "Player";
 
 
 
@@ -43,6 +44,8 @@ namespace Controllers
         private void SetUp()
         {
 
+            gameObject.tag = TAG;
+            gameObject.transform.GetChild(0).tag = gameObject.tag;
             animator.speed = data.AnimatorSpeed;
             startPosition = (-Vector3.right) * 3;
             rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
