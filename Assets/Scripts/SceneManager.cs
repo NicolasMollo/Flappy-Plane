@@ -33,13 +33,13 @@ namespace Managers
             SetCurrentScene(SceneType.TestScene);
 
         }
-        private void SetCurrentScene(SceneType _scene) {
+        private void SetCurrentScene(SceneType _sceneType) {
 
-            foreach (DatabaseScene item in scenes)
+            foreach (DatabaseScene scene in scenes)
             {
-                if (item.SceneType == _scene)
+                if (scene.SceneType == _sceneType)
                 {
-                    currentScene = item;
+                    currentScene = scene;
                     break;
                 }
             }

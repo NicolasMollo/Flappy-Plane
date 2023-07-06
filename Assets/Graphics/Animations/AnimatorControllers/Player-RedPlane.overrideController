@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player-RedPlane
+  m_Controller: {fileID: 9100000, guid: e80202adb99524d43aa390c2bfdfca8d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2884bee284af4b649ac0dc72d11bf0da, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bc0e15a62daa4fd4c9f3ff2ff3262f06, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b558ad862bd26ee4bb11c20081bdaa6b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eacede6f208f7ba44b1a161052646fd9, type: 2}

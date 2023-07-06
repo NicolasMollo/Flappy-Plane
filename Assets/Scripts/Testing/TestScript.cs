@@ -1,3 +1,4 @@
+using Controllers;
 using Database;
 using Managers;
 using System.Collections;
@@ -14,6 +15,7 @@ using UnityEngine.SceneManagement;
  - Duplicazione del GameManager al cambio di scena
  - Valore di currentScene al cambio di scena che viene riempito correttamente
  - Action "OnChangeScene" dello sceneManager funzionante
+ - Riferimento ai dati (Data) del player
 
  */
 
@@ -55,6 +57,11 @@ namespace Test {
             //Debug.Log($"currentScene index: {GameManager.Instance.sceneManager.CurrentScene.SceneIndex}");
             //Debug.Log($"currentScene name: {GameManager.Instance.sceneManager.CurrentScene.name}");
             //Debug.Log($"currentScene tyoe: {GameManager.Instance.sceneManager.CurrentScene.SceneType.ToString()}");
+            #endregion
+
+            #region Valore dei valori di "Data" di player controller
+            //Debug.Log($"Player name: {playerController.Data.P_name}");
+            //Debug.Log($"Player jump speed: {playerController.Data.JumpSpeed}");
             #endregion
         }
 
