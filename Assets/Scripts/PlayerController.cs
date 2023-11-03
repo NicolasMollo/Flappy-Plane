@@ -95,7 +95,7 @@ namespace Controllers
         private void AnimatePlayer()
         {
 
-            animator.SetTrigger("IsFlying");
+            animator.SetTrigger(data.AnimatorParameterName);
 
         }
 

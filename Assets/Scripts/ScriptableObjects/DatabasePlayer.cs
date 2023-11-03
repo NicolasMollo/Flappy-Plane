@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Database
@@ -33,6 +31,15 @@ namespace Database
         public float AnimatorSpeed
         {
             get => animatorSpeed;
+        }
+
+
+        [SerializeField]
+        [Tooltip("Animator parameter's name")]
+        private string animatorParameterName = "IsFlying";
+        public string AnimatorParameterName
+        {
+            get => animatorParameterName;
         }
 
     }

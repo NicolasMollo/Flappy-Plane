@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Database;
-using UnityEditor;
-using System.Data.Common;
-using System.Text;
-using UnityEditor.Presets;
+
 
 namespace Managers
 {
@@ -48,6 +45,7 @@ namespace Managers
 
 
         #region API
+
         /// <summary>
         /// Method used to change the scene.
         /// It accepts a "SceneType" parameter which is an enumeration enclosing all the scenes present within the application.
@@ -61,6 +59,7 @@ namespace Managers
             OnChangeScene?.Invoke(currentScene);
 
         }
+
         #endregion
 
     }
