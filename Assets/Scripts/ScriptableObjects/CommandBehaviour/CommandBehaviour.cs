@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Database
+namespace Commands
 {
 
     public abstract class CommandBehaviour : ScriptableObject
@@ -22,7 +22,10 @@ namespace Database
             set { currentState = value; }
         }
 
+        [Header("BASE CLASS DATA")]
+
         [SerializeField]
+        [Tooltip("If you have to wait for its completion to proceed")]
         protected bool waitCompletionToProceed = false;
 
 

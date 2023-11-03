@@ -35,6 +35,8 @@ namespace Controllers
 
 
 
+        #region Lifecycle
+
         private void Start()
         {
 
@@ -98,6 +100,8 @@ namespace Controllers
             animator.SetTrigger(data.AnimatorParameterName);
 
         }
+
+        #endregion
 
     }
 

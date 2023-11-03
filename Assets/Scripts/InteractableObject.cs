@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Database;
+using Commands;
 using UnityEngine.Rendering.Universal;
 
 
@@ -21,6 +21,14 @@ namespace Environment
         }
 
         [SerializeField]
+        [Tooltip("Interactable object's collider")]
+        private Collider2D _collider = null;
+        public Collider2D Collider
+        {
+            get => _collider;
+        }
+
+        [SerializeField]
         [Tooltip("Interactable object's animator")]
         private Animator animator = null;
         public Animator Animator
@@ -29,12 +37,8 @@ namespace Environment
         }
 
         [SerializeField]
-        [Tooltip("Interactable object's audio source")]
-        private AudioSource audioSource = null;
-        public AudioSource AudioSource
-        {
-            get => audioSource;
-        }
+        [Tooltip("List of commands to be executed by the interactable object when is its set up")]
+        private List<CommandBehaviour> setUpCommands = null;
 
         [SerializeField]
         [Tooltip("List of commands to be executed by the interactable object when the collision occurs")]
@@ -53,19 +57,35 @@ namespace Environment
         private void SetUp()
         {
 
+            // Collider set up
+            _collider.isTrigger = true;
+
+            // Commands set up
+            ExecuteSetUpCommands();
+
+        }
+        private void ExecuteSetUpCommands()
+        {
+        
+            foreach (CommandBehaviour command in setUpCommands)
+            {
+                command.DoCommand(this.gameObject);
+            }
+        
         }
 
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
 
-            if (collision.collider.CompareTag(OTHER_TAG))
+            if (collision.CompareTag(OTHER_TAG))
             {
-                ExecuteCommands();
+                ExecuteCollisionCommands();
             }
 
         }
-        private void ExecuteCommands()
+
+        private void ExecuteCollisionCommands()
         {
 
             foreach (CommandBehaviour command in collisionCommands)
@@ -74,6 +94,7 @@ namespace Environment
             }
 
         }
+
 
     }
 

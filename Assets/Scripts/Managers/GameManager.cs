@@ -12,6 +12,7 @@ namespace Managers
 
         // References to application managers
         public Managers.SceneManager sceneManager = null;
+        public AudioManager audioManager = null;
 
 
 
@@ -21,6 +22,9 @@ namespace Managers
             private set;
         } = null;
 
+
+
+        #region Lifecycle
 
         private void Awake()
         {
@@ -49,6 +53,8 @@ namespace Managers
             DontDestroyOnLoad(this.gameObject);
 
         }
+
+        #endregion
 
     }
 

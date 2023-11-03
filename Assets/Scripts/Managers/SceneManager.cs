@@ -24,6 +24,8 @@ namespace Managers
 
 
 
+        #region Lifecycle
+
         private void Start()
         {
 
@@ -42,6 +44,8 @@ namespace Managers
             }
 
         }
+
+        #endregion
 
 
         #region API
