@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security;
 using UnityEngine;
-using Sirenix;
-using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 
 
@@ -25,6 +20,8 @@ namespace Commands
         [Tooltip("Animator parameter's name")]
         private string parameterName = string.Empty;
 
+        #region Parameter type and any new attributes to assign
+
         [SerializeField]
         [Tooltip("Animator parameter's type")]
         private AnimatorControllerParameterType parameterType = AnimatorControllerParameterType.Trigger;
@@ -43,6 +40,8 @@ namespace Commands
         [Tooltip("Animator parameter's value to set")]
         [ShowIf("parameterType", AnimatorControllerParameterType.Bool)]
         private bool b_value = false;
+
+        #endregion
 
 
 

@@ -15,3 +15,4 @@ MonoBehaviour:
   waitCompletionToProceed: 0
   clip: {fileID: 8300000, guid: 5d01af0c09fb2fa41b2729c20247488a, type: 3}
   waitIfSourceIsPlaying: 0
+  audioSourceType: 1

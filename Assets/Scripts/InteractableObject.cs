@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Commands;
-using UnityEngine.Rendering.Universal;
 
 
 namespace Environment
@@ -48,12 +46,15 @@ namespace Environment
 
 
 
+        #region Lifecycle
+
         private void Start()
         {
 
             SetUp();
 
         }
+
         private void SetUp()
         {
 
@@ -64,6 +65,7 @@ namespace Environment
             ExecuteSetUpCommands();
 
         }
+
         private void ExecuteSetUpCommands()
         {
         
@@ -74,6 +76,10 @@ namespace Environment
         
         }
 
+        #endregion
+
+
+        #region Collision events
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -94,6 +100,8 @@ namespace Environment
             }
 
         }
+
+        #endregion
 
 
     }

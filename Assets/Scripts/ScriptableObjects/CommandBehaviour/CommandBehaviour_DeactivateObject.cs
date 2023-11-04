@@ -1,10 +1,7 @@
-using Sirenix.OdinInspector;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System;
-using Environment;
+
 
 namespace Commands
 {
@@ -45,6 +42,7 @@ namespace Commands
         {
 
             yield return new WaitForSeconds(waitingTime);
+
             bool activeness = false;
             _object.SetActive(activeness);
 

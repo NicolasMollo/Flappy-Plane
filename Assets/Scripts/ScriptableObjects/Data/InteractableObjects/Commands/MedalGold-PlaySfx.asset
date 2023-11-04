@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MedalGold-PlaySfx
   m_EditorClassIdentifier: 
   waitCompletionToProceed: 0
-  clip: {fileID: 8300000, guid: ab4a0403f03e05044bc72cc805465fcc, type: 3}
-  waitIfSourceIsPlaying: 1
+  clip: {fileID: 8300000, guid: 5d01af0c09fb2fa41b2729c20247488a, type: 3}
+  waitIfSourceIsPlaying: 0
+  audioSourceType: 2
