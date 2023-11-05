@@ -1,5 +1,9 @@
+using Database;
+using Environment;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,11 +14,27 @@ namespace Managers
     public class GameManager : MonoBehaviour
     {
 
-        // References to application managers
-        public Managers.SceneManager sceneManager = null;
-        public AudioManager audioManager = null;
+        #region Managers and macro controllers with them properties
 
+        private Managers.SceneManager sceneManager = null;
+        private AudioManager audioManager = null;
+        private EnvironmentRootController environmentRootController = null;
+        private const string ENVIRONMENTROOTCONTROLLER_NAME = "EnvironmentRootController";
 
+        public Managers.SceneManager SceneManager
+        {
+            get => sceneManager;
+        }
+        public AudioManager AudioManager
+        {
+            get => audioManager;
+        }
+        public EnvironmentRootController EnvironmentRootController
+        {
+            get => environmentRootController;
+        }
+
+        #endregion
 
         public static GameManager Instance
         {
@@ -33,6 +53,7 @@ namespace Managers
             SetUp();
 
         }
+
         private void SetSingleton()
         {
 
@@ -51,6 +72,46 @@ namespace Managers
         {
 
             DontDestroyOnLoad(this.gameObject);
+
+        }
+
+
+
+        private void OnEnable()
+        {
+
+            AddListeners();
+
+        }
+
+        private void AddListeners()
+        {
+
+            sceneManager.OnChangeScene += FillEnvironmentRootControllerReference;
+        
+        }
+
+        private void OnDisable()
+        {
+
+            RemoveListeners();
+
+        }
+
+        private void RemoveListeners()
+        {
+
+            sceneManager.OnChangeScene -= FillEnvironmentRootControllerReference;
+
+        }
+
+        private void FillEnvironmentRootControllerReference(DatabaseScene _currentScene)
+        {
+
+            if (_currentScene.SceneType == SceneType.GameScene)
+            {
+                environmentRootController = GameObject.Find(ENVIRONMENTROOTCONTROLLER_NAME).GetComponent<EnvironmentRootController>();
+            }
 
         }
 

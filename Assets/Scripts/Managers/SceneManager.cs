@@ -10,6 +10,7 @@ namespace Managers
     [DisallowMultipleComponent]
     public class SceneManager : MonoBehaviour
     {
+
         [SerializeField]
         [Tooltip("List of game scenes")]
         private List<DatabaseScene> scenes = null;
@@ -20,7 +21,15 @@ namespace Managers
             get => currentScene;
         }
 
+        #region Actions
+
+        /// <summary>
+        /// Action that accepts methods that have a 'DatabaseScene' type parameter as an argument.
+        /// When the event is invoked the 'DatabaseScene' parameter equals the current scene data.
+        /// </summary>
         public Action<DatabaseScene> OnChangeScene = null;
+
+        #endregion
 
 
 

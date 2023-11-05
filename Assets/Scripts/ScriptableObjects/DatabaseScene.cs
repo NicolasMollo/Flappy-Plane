@@ -5,6 +5,8 @@ public enum SceneType : byte
 {
     TestScene,
     SampleScene,
+    GameScene,
+    MenuScene,
     Last
 }
 
