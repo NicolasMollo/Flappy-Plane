@@ -29,7 +29,7 @@ namespace Commands
 
             base.DoCommand(_self);
 
-            Managers.GameManager.Instance.audioManager.PlaySfx(clip, audioSourceType, waitIfSourceIsPlaying);
+            Managers.GameManager.Instance.AudioManager.PlaySfx(clip, audioSourceType, waitIfSourceIsPlaying);
 
             CurrentState = CBState.Completed;
 
