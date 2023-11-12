@@ -416,6 +416,7 @@ MonoBehaviour:
   scenes:
   - {fileID: 11400000, guid: cf38e4b9e77ab4b459a47ac58b7b7bfd, type: 2}
   - {fileID: 11400000, guid: b163f66ca32630b43b8c0bbc80e77387, type: 2}
+  - {fileID: 11400000, guid: f1f429b848ed16841afb3080412c6b8c, type: 2}
 --- !u!1 &1046481157
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneManager: {fileID: 949022500}
   audioManager: {fileID: 1944921133}
+  environmentRootController: {fileID: 705294591}
 --- !u!4 &1726017636
 Transform:
   m_ObjectHideFlags: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SampleScene
   m_EditorClassIdentifier: 
   sceneName: SampleScene
-  sceneIndex: 1
+  sceneIndex: 2
   sceneType: 1

@@ -39,6 +39,9 @@ namespace Environment
         private Vector2 groundPosition = Vector2.zero;
 
 
+        // creare 2 oggetti ground tramite i prefab e riutilizzare quelli
+        // tramite object pooling
+
 
         #region Lifecycle
 

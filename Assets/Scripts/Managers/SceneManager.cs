@@ -52,6 +52,9 @@ namespace Managers
                 }
             }
 
+            // test
+            // OnChangeScene?.Invoke(currentScene);
+
         }
 
         #endregion

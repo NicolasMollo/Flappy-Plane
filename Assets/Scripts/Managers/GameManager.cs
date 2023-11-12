@@ -16,7 +16,9 @@ namespace Managers
 
         #region Managers and macro controllers with them properties
 
+        [SerializeField]
         private Managers.SceneManager sceneManager = null;
+        [SerializeField]
         private AudioManager audioManager = null;
         private EnvironmentRootController environmentRootController = null;
         private const string ENVIRONMENTROOTCONTROLLER_NAME = "EnvironmentRootController";
@@ -111,6 +113,11 @@ namespace Managers
             if (_currentScene.SceneType == SceneType.GameScene)
             {
                 environmentRootController = GameObject.Find(ENVIRONMENTROOTCONTROLLER_NAME).GetComponent<EnvironmentRootController>();
+                Debug.Log("Found 'EnvironmentRootController'");
+            }
+            else
+            {
+                Debug.Log("NOT found 'EnvironmentRootController'");
             }
 
         }
