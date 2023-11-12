@@ -113,11 +113,11 @@ namespace Managers
             if (_currentScene.SceneType == SceneType.GameScene)
             {
                 environmentRootController = GameObject.Find(ENVIRONMENTROOTCONTROLLER_NAME).GetComponent<EnvironmentRootController>();
-                Debug.Log("Found 'EnvironmentRootController'");
+                Debug.Log("== GAMEMANAGER LOG == Found 'EnvironmentRootController'");
             }
             else
             {
-                Debug.Log("NOT found 'EnvironmentRootController'");
+                Debug.Log("== GAMEMANAGER LOG == NOT found 'EnvironmentRootController'");
             }
 
         }

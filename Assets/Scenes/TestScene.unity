@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ==Ground-Dirty==
       objectReference: {fileID: 0}
+    - target: {fileID: 8116411788975224015, guid: cd90b928fcbd98142b48eee663506178, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd90b928fcbd98142b48eee663506178, type: 3}
 --- !u!4 &1623103362 stripped
@@ -598,7 +602,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneManager: {fileID: 949022500}
   audioManager: {fileID: 1944921133}
-  environmentRootController: {fileID: 705294591}
 --- !u!4 &1726017636
 Transform:
   m_ObjectHideFlags: 0

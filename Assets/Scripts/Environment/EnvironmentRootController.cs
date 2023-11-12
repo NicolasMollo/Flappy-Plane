@@ -6,20 +6,20 @@ using UnityEngine.Rendering;
 namespace Environment
 {
 
+    public enum EnvironmentType : byte
+    {
+        Grassy,
+        Dirty,
+        Snowy,
+        Rocky,
+        Frozen
+    }
+
     [DisallowMultipleComponent]
     public class EnvironmentRootController : MonoBehaviour
     {
 
         #region Environment type
-
-        public enum EnvironmentType : byte
-        {
-            Grassy,
-            Dirty,
-            Snowy,
-            Rocky,
-            Frozen
-        }
 
         private EnvironmentType environmentType = EnvironmentType.Grassy;
         public EnvironmentType _EnvironmentType

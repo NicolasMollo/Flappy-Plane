@@ -38,7 +38,8 @@ namespace Managers
         private void Start()
         {
 
-            SetCurrentScene(SceneType.TestScene);
+            SetCurrentScene(SceneType.GameScene);
+            OnChangeScene?.Invoke(currentScene);
 
         }
         private void SetCurrentScene(SceneType _sceneType) {
@@ -51,9 +52,6 @@ namespace Managers
                     break;
                 }
             }
-
-            // test
-            // OnChangeScene?.Invoke(currentScene);
 
         }
 

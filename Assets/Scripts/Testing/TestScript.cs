@@ -63,6 +63,9 @@ namespace Test {
             //Debug.Log($"Player name: {playerController.Data.P_name}");
             //Debug.Log($"Player jump speed: {playerController.Data.JumpSpeed}");
             #endregion
+
+            // Debug.Log($"Screen width {Screen.width}\nScreen height {Screen.height}");
+
         }
 
         #region Test sul funzionamento della Action "OnChangeScene" dello sceneManager
