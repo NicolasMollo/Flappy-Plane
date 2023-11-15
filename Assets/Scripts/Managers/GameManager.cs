@@ -20,8 +20,7 @@ namespace Managers
         private Managers.SceneManager sceneManager = null;
         [SerializeField]
         private AudioManager audioManager = null;
-        private EnvironmentRootController environmentRootController = null;
-        private const string ENVIRONMENTROOTCONTROLLER_NAME = "EnvironmentRootController";
+
 
         public Managers.SceneManager SceneManager
         {
@@ -30,10 +29,6 @@ namespace Managers
         public AudioManager AudioManager
         {
             get => audioManager;
-        }
-        public EnvironmentRootController EnvironmentRootController
-        {
-            get => environmentRootController;
         }
 
         #endregion
@@ -44,6 +39,12 @@ namespace Managers
             private set;
         } = null;
 
+
+        private EnvironmentType environmentType = EnvironmentType.Rocky;
+        public EnvironmentType EnvironmentType
+        {
+            get => environmentType;
+        }
 
 
         #region Lifecycle
@@ -74,51 +75,6 @@ namespace Managers
         {
 
             DontDestroyOnLoad(this.gameObject);
-
-        }
-
-
-
-        private void OnEnable()
-        {
-
-            AddListeners();
-
-        }
-
-        private void AddListeners()
-        {
-
-            sceneManager.OnChangeScene += FillEnvironmentRootControllerReference;
-        
-        }
-
-        private void OnDisable()
-        {
-
-            RemoveListeners();
-
-        }
-
-        private void RemoveListeners()
-        {
-
-            sceneManager.OnChangeScene -= FillEnvironmentRootControllerReference;
-
-        }
-
-        private void FillEnvironmentRootControllerReference(DatabaseScene _currentScene)
-        {
-
-            if (_currentScene.SceneType == SceneType.GameScene)
-            {
-                environmentRootController = GameObject.Find(ENVIRONMENTROOTCONTROLLER_NAME).GetComponent<EnvironmentRootController>();
-                Debug.Log("== GAMEMANAGER LOG == Found 'EnvironmentRootController'");
-            }
-            else
-            {
-                Debug.Log("== GAMEMANAGER LOG == NOT found 'EnvironmentRootController'");
-            }
 
         }
 

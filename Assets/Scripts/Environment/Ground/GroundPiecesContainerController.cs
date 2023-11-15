@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -17,48 +19,59 @@ namespace Environment
         private GroundPieceController[] groundPieceControllers = null;
 
         [SerializeField]
-        [Tooltip("Object representing the starting point of the object (far left)")]
-        private GameObject startPositionObject = null;
-
-        [SerializeField]
-        [Tooltip("Object representing the end point of the object (far right)")]
-        private GameObject endPositionObject = null;
-
-
-
-        public float GroundPieceSizeX
+        [Tooltip("Trigger collider")]
+        private Collider2D _collider = null;
+        public Collider2D Collider
         {
-            get => groundPieceControllers[0].Collider.bounds.size.x;
+            get => _collider;
         }
 
-        public float HalfGroundPieceSizeX
+
+        public Action OnCollideWithTriggerCollider = null;
+
+        private const string ENVIRONMENTCOLLISIONOBJECT_TAG = "EnvironmentCollisionObject";
+
+
+
+        public float SizeX
         {
-            get => GroundPieceSizeX * 0.5f;
+            get => groundPieceControllers[0].SizeX * groundPieceControllers.Length;
         }
 
-        public float GroundPieceSizeY
+        public float HalfSizeX
         {
-            get => groundPieceControllers[0].Collider.bounds.size.y;
+            get => SizeX * 0.5f;
         }
 
-        public float GroundPiecesSizeX
+        #endregion
+
+
+        #region API
+
+        /// <summary>
+        /// Method that deactivates the object.
+        /// </summary>
+        public void DeactivateMe()
         {
-            get => groundPieceControllers[0].Collider.bounds.size.x * groundPieceControllers.Length;
+
+            gameObject.SetActive(false);
+        
         }
 
-        public float HalfGroundPiecesSizeX
-        {
-            get => GroundPiecesSizeX * 0.5f;
-        }
+        #endregion
 
-        public GameObject StartPositionObject
-        {
-            get => startPositionObject;
-        }
 
-        public GameObject EndPositionObject
+        #region Collision events
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            get => endPositionObject;
+
+            if (collision.CompareTag(ENVIRONMENTCOLLISIONOBJECT_TAG))
+            {
+                DeactivateMe();
+                OnCollideWithTriggerCollider?.Invoke();
+            }
+
         }
 
         #endregion

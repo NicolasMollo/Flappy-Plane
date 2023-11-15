@@ -38,7 +38,7 @@ namespace Managers
         private void Start()
         {
 
-            SetCurrentScene(SceneType.GameScene);
+            SetCurrentScene(SceneType.TestScene);
             OnChangeScene?.Invoke(currentScene);
 
         }

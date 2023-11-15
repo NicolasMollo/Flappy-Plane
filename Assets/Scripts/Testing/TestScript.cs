@@ -45,12 +45,14 @@ namespace Test {
             #region Duplicazione GameManager al cambio di scena
             //if (Input.GetKeyDown(KeyCode.Space))
             //{
-            //    GameManager.Instance.sceneManager.ChangeScene(SceneType.SampleScene);
+            //    GameManager.Instance.SceneManager.ChangeScene(SceneType.SampleScene);
             //}
             //else if (Input.GetKeyDown(KeyCode.A))
             //{
-            //    GameManager.Instance.sceneManager.ChangeScene(SceneType.TestScene);
+            //    GameManager.Instance.SceneManager.ChangeScene(SceneType.TestScene);
             //}
+
+            // Debug.Log($"== Test Script == Environent Root Controller: {GameManager.Instance.EnvironmentRootController}");
             #endregion
 
             #region Valore di "currentScene" al cambio di scena

@@ -28,8 +28,40 @@ namespace Environment
             get => _spriteRenderer;
         }
 
+        [SerializeField]
+        [Tooltip("Type of ground piece")]
+        private EnvironmentType groundPieceType = EnvironmentType.Grassy;
+
         private const string OTHER_TAG = "Player";
-        public Action OnCollideWithMe = null;
+        public Action<EnvironmentType> OnCollideWithMe = null;
+
+        //[SerializeField]
+        //[Tooltip("Allows you to activate the effects of the collision also on the parent object")]
+        //private bool actCollisionEffectsOnParent = true;
+
+        #region Size properties
+
+        public float SizeX
+        {
+            get => _collider.bounds.size.x;
+        }
+
+        public float HalfSizeX
+        {
+            get => _collider.bounds.size.x * 0.5f;
+        }
+
+        public float SizeY
+        {
+            get => _collider.bounds.size.y;
+        }
+
+        public float HalfSizeY
+        {
+            get => _collider.bounds.size.y * 0.5f;
+        }
+
+        #endregion
 
 
 
@@ -41,11 +73,18 @@ namespace Environment
                 // do something
 
 
-                OnCollideWithMe?.Invoke();
+                OnCollideWithMe?.Invoke(groundPieceType);
 
             }
+            //else if (collision.collider.CompareTag("EnvironmentCollisionObject"))
+            //{
+            
+            //    gameObject.transform.parent.gameObject.SetActive(false);
+            
+            //}
 
         }
+
 
     }
 

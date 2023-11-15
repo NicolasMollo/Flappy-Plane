@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 
 namespace Environment
@@ -10,9 +12,9 @@ namespace Environment
     public class GroundController : MonoBehaviour
     {
 
-        [Header("GROUND DATA")]
-
         #region Prefabs
+
+        [Header("GROUND PREFABS")]
 
         [SerializeField]
         [Tooltip("Prefab of the grassy ground")]
@@ -36,48 +38,94 @@ namespace Environment
 
         #endregion
 
-        private EnvironmentType environmentType = EnvironmentType.Dirty;
+        [Header("GROUND DATA")]
 
-        private Vector2 groundPosition = Vector2.zero;
+        [SerializeField]
+        [Tooltip("Speed of movement of ground objects")]
+        private float movementSpeed = 10f;
+
 
         private GroundPiecesContainerController[] groundPiecesContainerControllers = null;
-        private const int NUMBEROF_GROUNDOBJECTS = 2;
-        private Transform groundObjectPiece = null;
-        private SpriteRenderer groundObjectPieceSpriteRenderer = null;
+        private Vector2 groundPosition = Vector2.zero;
 
-        // creare 2 oggetti ground tramite i prefab e riutilizzare quelli
-        // tramite object pooling
+        private const int NUMBEROF_GROUNDOBJECTS = 2;
+        private const float GROUND_POSITION_Y_OFFSET = 0.3f;
+
 
 
         #region Lifecycle
 
-        private void Start()
+        /// <summary>
+        /// Add listeners to actions.
+        /// Called in 'SetUp' (inside the 'API' region) which is called in 'Start' inside the root class 'EnvironmentRootController'
+        /// </summary>
+        private void AddListeners()
         {
-
-            SetUp();
-            SetGroundObjects();
-
-            Debug.Log($"HalfScreenSize {Utilities.Screen.HalfScreenWidthInPixels}");
-            Debug.Log($"Screen position X {Utilities.Screen.ScreenPositionX}");
-            Debug.Log($"Screen position Y {Utilities.Screen.ScreenPositionY}");
-            Debug.Log($"Screen position {Utilities.Screen.ScreenPosition}");
+            for (int i = 0; i < groundPiecesContainerControllers.Length; i++)
+            {
+                groundPiecesContainerControllers[i].OnCollideWithTriggerCollider += SetGroundObjectPosition;
+            }
 
         }
 
-        private void SetUp()
+
+        private void OnDestroy()
+        {
+            RemoveListeners();
+        }
+
+        private void RemoveListeners()
+        {
+            for (int i = 0; i < groundPiecesContainerControllers.Length; i++)
+            {
+                groundPiecesContainerControllers[i].OnCollideWithTriggerCollider -= SetGroundObjectPosition;
+            }
+
+        }
+
+        #endregion
+
+
+        #region API
+
+        /// <summary>
+        /// Method that sets the ground controller.
+        /// The method accepts an 'EnvironmentType' argument which represents the type of environment of the game scene
+        /// and will be used to create/manage the right type of ground objects.
+        /// </summary>
+        /// <param name="_environmentType"></param>
+        public void SetUp(EnvironmentType _environmentType)
         {
 
-            environmentType = Managers.GameManager.Instance.EnvironmentRootController._EnvironmentType;
             groundPiecesContainerControllers = new GroundPiecesContainerController[NUMBEROF_GROUNDOBJECTS];
-            groundObjectPiece = prefabDirtyGround.transform.GetChild(0);
-            groundObjectPieceSpriteRenderer = groundObjectPiece.GetComponent<SpriteRenderer>();
+            SetGroundObjects(_environmentType);
+            AddListeners();
 
         }
 
-        private void SetGroundObjects()
+        /// <summary>
+        /// Method that moves ground objects.
+        /// </summary>
+        public void UpdatePosition()
         {
 
-            switch (environmentType)
+            Vector3 direction = Vector2.left.normalized;
+            float calculatedMovementSpeed = movementSpeed * Time.deltaTime;
+            Vector3 velocity = direction * calculatedMovementSpeed;
+
+            transform.position += velocity;
+
+        }
+
+        #endregion
+
+
+        #region Private methods
+
+        private void SetGroundObjects(EnvironmentType _environmentType)
+        {
+
+            switch (_environmentType)
             {
                 case EnvironmentType.Grassy:
                     CreateGroundObjects(prefabGrassyGround);
@@ -100,8 +148,6 @@ namespace Environment
 
         }
 
-        private const float GROUND_POSITION_Y_OFFSET = 0.3f;
-
         private void CreateGroundObjects(GameObject _prefabGround)
         {
 
@@ -116,8 +162,8 @@ namespace Environment
                 }
                 else
                 {
-                    groundPosition = new Vector3(groundPiecesContainerControllers[0].EndPositionObject.transform.position.x +
-                        groundPiecesContainerControllers[0].GroundPieceSizeX + (groundPiecesContainerControllers[0].GroundPieceSizeX * 0.5f),
+                    groundPosition = new Vector3(groundPiecesContainerControllers[0].transform.position.x +
+                        groundPiecesContainerControllers[0].SizeX,
                         groundPosition.y, 0);
                 }
 
@@ -127,20 +173,39 @@ namespace Environment
 
             }
 
-            // test
-            for (int i = 0; i < groundPiecesContainerControllers.Length; i++)
-            {
-                Debug.Log($"== GROUNDCONTROLLER LOG == Ground object number {i}");
-            }
-
         }
 
-        #endregion
+        GroundPiecesContainerController activatedGroundPiecesContainer = null;
+        GroundPiecesContainerController deactivatedGroundPiecesContainer = null;
 
 
-        #region API
+        public void SetGroundObjectPosition()
+        {
+
+            //GroundPiecesContainerController activatedGroundPiecesContainer = null;
+            //GroundPiecesContainerController deactivatedGroundPiecesContainer = null;
 
 
+            for (int i = 0; i < groundPiecesContainerControllers.Length; i++)
+            {
+                if (!groundPiecesContainerControllers[i].gameObject.activeSelf)
+                {
+                    deactivatedGroundPiecesContainer = groundPiecesContainerControllers[i];
+                }
+                else
+                {
+                    activatedGroundPiecesContainer = groundPiecesContainerControllers[i];
+                }
+            }
+
+            deactivatedGroundPiecesContainer.transform.position = new Vector3(activatedGroundPiecesContainer.transform.position.x +
+                        activatedGroundPiecesContainer.SizeX,
+                        groundPosition.y, 0);
+
+
+            deactivatedGroundPiecesContainer.gameObject.SetActive(true);
+
+        }
 
         #endregion
 

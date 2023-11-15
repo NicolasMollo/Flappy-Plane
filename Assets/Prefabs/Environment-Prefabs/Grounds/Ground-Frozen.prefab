@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3038638347993360064
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6921107009930760269}
-  m_Layer: 0
-  m_Name: StartPosition-Logic
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6921107009930760269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3038638347993360064}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.63999, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8349372907058218744}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5352911907417528824
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 6501788506297380734}
   _spriteRenderer: {fileID: 1662440683501137085}
+  groundPieceType: 4
 --- !u!1 &6071422797967354172
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8349372907058218744}
+  - component: {fileID: 4236023052074446628}
   - component: {fileID: 7765799680137316865}
   m_Layer: 0
   m_Name: Ground-Frozen
@@ -219,11 +190,35 @@ Transform:
   - {fileID: 6286357023813792369}
   - {fileID: 5254913592381377326}
   - {fileID: 2173125448073025198}
-  - {fileID: 6921107009930760269}
-  - {fileID: 1378123187019364249}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4236023052074446628
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071422797967354172}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -10.697064, y: -0.16832113}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09123421, y: 0.34651852}
+  m_EdgeRadius: 0
 --- !u!114 &7765799680137316865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,8 +235,6 @@ MonoBehaviour:
   - {fileID: 7472977745566076730}
   - {fileID: 5678958592264449444}
   - {fileID: 2280605119712902868}
-  startPositionObject: {fileID: 3038638347993360064}
-  endPositionObject: {fileID: 8263341164365756575}
 --- !u!1 &6080171821698353659
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 7750458116902671411}
   _spriteRenderer: {fileID: 6025367308944529533}
+  groundPieceType: 4
 --- !u!1 &6378556951276631197
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,34 +548,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 8727649970132540035}
   _spriteRenderer: {fileID: 2399249106030282033}
---- !u!1 &8263341164365756575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1378123187019364249}
-  m_Layer: 0
-  m_Name: EndPosition-Logic
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1378123187019364249
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8263341164365756575}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.599997, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8349372907058218744}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  groundPieceType: 4
