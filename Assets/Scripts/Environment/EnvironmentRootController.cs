@@ -1,8 +1,11 @@
 using Managers;
+using Sirenix.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.Rendering;
+
 
 namespace Environment
 {
@@ -76,15 +79,15 @@ namespace Environment
             environmentType = GameManager.Instance.EnvironmentType;
 
             groundController.SetUp(environmentType);
+            environmentCollisionObjectController.SetUp(groundController.GroundPiecesContainerControllers[0].SizeX + 
+                groundController.GroundPiecesContainerControllers[0].GroundPieceControllers[0].HalfSizeX);
 
-            // EnvironmentCollisionObjectController
-            // Vector3 environmentCollisionObjectControllerPosition = new Vector3(Vector3.zero.x - (groundController.GroundPiecesContainerControllers[0].SizeX + groundController.GroundPiecesContainerControllers[0].HalfSizeX), 0, 0);
-            Vector3 environmentCollisionObjectControllerPosition = new Vector3(/*Utilities.Screen.ScreenPositionX - Utilities.Screen.ScreenWidthInUnits * 3, 0, 0*/);
-            environmentCollisionObjectController.SetUp(/*environmentCollisionObjectControllerPosition*/);
+            //Utilities.Screen.PrintAllScreenProperties();
 
             // AddListeners();
 
         }
+
 
         private void Update()
         {

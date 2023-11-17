@@ -164,7 +164,7 @@ namespace Environment
                 if (i == 0)
                 {
                     groundPosition = new Vector3(Utilities.Screen.ScreenPositionX,
-                        Utilities.Screen.ScreenPositionY - Utilities.Screen.HalfScreenHeightInUnits + groundPiecesContainerControllers[i].HalfSizeY,
+                        Utilities.Screen.ScreenPositionY - Utilities.Screen.HalfScreenHeightInUnits/*Utilities.Screen.ConvertPixelToUnits(Utilities.Screen.HalfScreenHeightInPixels)*/ + groundPiecesContainerControllers[i].HalfSizeY,
                         0);
                 }
                 else

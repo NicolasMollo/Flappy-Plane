@@ -176,6 +176,30 @@ namespace Utilities
 
         #endregion
 
+
+        public static float ConvertPixelToUnits(float pixelSize)
+        {
+            // Ottieni le coordinate del punto in basso a sinistra dello schermo in pixel
+            Vector3 screenBottomLeft = new Vector3(0, 0, 0);
+
+            // Converti le coordinate in unità del mondo
+            Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
+
+            // Ottieni le coordinate del punto in alto a destra dello schermo in pixel
+            Vector3 screenTopRight = new Vector3(UnityEngine.Screen.width, UnityEngine.Screen.height, 0);
+
+            // Converti le coordinate in unità del mondo
+            Vector3 worldTopRight = Camera.main.ScreenToWorldPoint(screenTopRight);
+
+            // Calcola la larghezza della finestra in unità
+            float windowWidthInUnits = Mathf.Abs(worldTopRight.x - worldBottomLeft.x);
+
+            // Calcola la grandezza in unità
+            float sizeInUnits = pixelSize / UnityEngine.Screen.width * windowWidthInUnits;
+
+            return sizeInUnits;
+        }
+
     }
 
 }

@@ -18,6 +18,10 @@ namespace Environment
         [SerializeField]
         [Tooltip("Graphic objects inside the container (ordered from left to right)")]
         private GroundPieceController[] groundPieceControllers = null;
+        public GroundPieceController[] GroundPieceControllers
+        {
+            get => groundPieceControllers;
+        }
 
         [SerializeField]
         [Tooltip("Trigger collider")]
@@ -53,7 +57,6 @@ namespace Environment
         public Action OnCollideWithTriggerCollider = null;
         private const string ENVIRONMENTCOLLISIONOBJECT_TAG = "EnvironmentCollisionObject";
 
-        //private bool isInFirstPlace = false;
 
 
         #region API
@@ -65,8 +68,7 @@ namespace Environment
         {
 
             gameObject.SetActive(false);
-            //isInFirstPlace = false;
-        
+
         }
 
         #endregion

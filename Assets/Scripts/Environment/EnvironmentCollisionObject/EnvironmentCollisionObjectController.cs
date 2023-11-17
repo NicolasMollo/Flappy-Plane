@@ -1,6 +1,8 @@
+using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -29,41 +31,68 @@ namespace Environment
             get => _rigidbody;
         }
 
-        public Action OnCollideWithMe = null;
+        #region Size properties
+
+        public float SizeX
+        {
+            get => _collider.bounds.size.x;
+        }
+
+        public float HalfSizeX
+        {
+            get => SizeX * 0.5f;
+        }
+
+        public float SizeY
+        {
+            get => _collider.bounds.size.y;
+        }
+
+        public float HalfSizeY
+        {
+            get => SizeY * 0.5f;
+        }
+
+        #endregion
+
 
 
         #region API
 
-        public void SetUp(/*Vector3 _position*/)
+        /// <summary>
+        /// Method that sets the environment collision object controller.
+        /// The method accepts as an argument a float which represents how far away you want the collision object
+        /// from the leftmost point of the window (starting point of the collision object)
+        /// (distance which will be towards the left (Vector3.left))
+        /// </summary>
+        /// <param name="_offsetX"></param>
+        public void SetUp(float _offsetX)
         {
-        
+
             _collider.isTrigger = true;
             _rigidbody.bodyType = RigidbodyType2D.Kinematic;
-            //_rigidbody.position = _position;
+            SetPosition(_offsetX);
         
         }
 
         #endregion
 
 
-        #region Collision events
+        #region Private methods
 
-
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void SetPosition(float _offsetX)
         {
 
-            //if (collision.CompareTag("Ground"))
-            //{
-            //    OnCollideWithMe?.Invoke();
-            //    // aggiungere un collider all'oggetto e gestire la collisione con quello.
-            //    //collision.gameObject.GetComponent<GroundPiecesContainerController>().DeactivateMe();
-            //    //// collision.gameObject.transform.parent.gameObject.transform.parent.GetComponent<GroundController>().SetGroundObjectPosition();
-            //    //environmentRootController.GroundController.SetGroundObjectPosition();
-            //    //Debug.Log($"== ENVIRONMENT COLLISION OBJECT == collided with ground object");
-            //}
+            float positionXRelativeToTheWindow = Utilities.Screen.ScreenPositionX -
+                Utilities.Screen.ConvertPixelToUnits(Utilities.Screen.ScreenWidthInPixels * 0.5f) -
+                HalfSizeX;
+
+            Vector3 newPostion = new Vector3(positionXRelativeToTheWindow - _offsetX, 0, 0);
+
+
+            _rigidbody.position = newPostion;
 
         }
-
 
         #endregion
 
