@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 
 namespace Environment
@@ -46,10 +45,14 @@ namespace Environment
 
 
         private GroundPiecesContainerController[] groundPiecesContainerControllers = null;
+        public GroundPiecesContainerController[] GroundPiecesContainerControllers
+        {
+            get => groundPiecesContainerControllers;
+        }
+
         private Vector2 groundPosition = Vector2.zero;
 
         private const int NUMBEROF_GROUNDOBJECTS = 2;
-        private const float GROUND_POSITION_Y_OFFSET = 0.3f;
 
 
 
@@ -154,10 +157,14 @@ namespace Environment
             for (int i = 0; i < NUMBEROF_GROUNDOBJECTS; i++)
             {
 
+                GameObject groundObject = Instantiate(_prefabGround, this.gameObject.transform);
+                GroundPiecesContainerController groundPiecesContainerController = groundObject.GetComponent<GroundPiecesContainerController>();
+                groundPiecesContainerControllers[i] = groundPiecesContainerController;
+
                 if (i == 0)
                 {
                     groundPosition = new Vector3(Utilities.Screen.ScreenPositionX,
-                        Utilities.Screen.ScreenPositionY - Utilities.Screen.HalfScreenHeightInUnits + GROUND_POSITION_Y_OFFSET,
+                        Utilities.Screen.ScreenPositionY - Utilities.Screen.HalfScreenHeightInUnits + groundPiecesContainerControllers[i].HalfSizeY,
                         0);
                 }
                 else
@@ -167,24 +174,19 @@ namespace Environment
                         groundPosition.y, 0);
                 }
 
-                GameObject groundObject = Instantiate(_prefabGround, groundPosition, _prefabGround.transform.rotation, this.gameObject.transform);
-                GroundPiecesContainerController groundPiecesContainerController = groundObject.GetComponent<GroundPiecesContainerController>();
-                groundPiecesContainerControllers[i] = groundPiecesContainerController;
+                groundPiecesContainerControllers[i].transform.position = groundPosition;
+                groundPiecesContainerControllers[i].transform.rotation = _prefabGround.transform.rotation;
 
             }
 
         }
 
-        GroundPiecesContainerController activatedGroundPiecesContainer = null;
-        GroundPiecesContainerController deactivatedGroundPiecesContainer = null;
 
-
-        public void SetGroundObjectPosition()
+        private void SetGroundObjectPosition()
         {
 
-            //GroundPiecesContainerController activatedGroundPiecesContainer = null;
-            //GroundPiecesContainerController deactivatedGroundPiecesContainer = null;
-
+            GroundPiecesContainerController activatedGroundPiecesContainer = null;
+            GroundPiecesContainerController deactivatedGroundPiecesContainer = null;
 
             for (int i = 0; i < groundPiecesContainerControllers.Length; i++)
             {

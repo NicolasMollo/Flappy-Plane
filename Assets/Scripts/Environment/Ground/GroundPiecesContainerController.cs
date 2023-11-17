@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -27,12 +28,6 @@ namespace Environment
         }
 
 
-        public Action OnCollideWithTriggerCollider = null;
-
-        private const string ENVIRONMENTCOLLISIONOBJECT_TAG = "EnvironmentCollisionObject";
-
-
-
         public float SizeX
         {
             get => groundPieceControllers[0].SizeX * groundPieceControllers.Length;
@@ -43,7 +38,22 @@ namespace Environment
             get => SizeX * 0.5f;
         }
 
+        public float SizeY
+        {
+            get => groundPieceControllers[0].SizeY;
+        }
+
+        public float HalfSizeY
+        {
+            get => SizeY * 0.5f;
+        }
+
         #endregion
+
+        public Action OnCollideWithTriggerCollider = null;
+        private const string ENVIRONMENTCOLLISIONOBJECT_TAG = "EnvironmentCollisionObject";
+
+        //private bool isInFirstPlace = false;
 
 
         #region API
@@ -55,6 +65,7 @@ namespace Environment
         {
 
             gameObject.SetActive(false);
+            //isInFirstPlace = false;
         
         }
 

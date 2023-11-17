@@ -32,12 +32,8 @@ namespace Environment
         [Tooltip("Type of ground piece")]
         private EnvironmentType groundPieceType = EnvironmentType.Grassy;
 
-        private const string OTHER_TAG = "Player";
+        private const string PLAYER_TAG = "Player";
         public Action<EnvironmentType> OnCollideWithMe = null;
-
-        //[SerializeField]
-        //[Tooltip("Allows you to activate the effects of the collision also on the parent object")]
-        //private bool actCollisionEffectsOnParent = true;
 
         #region Size properties
 
@@ -68,7 +64,7 @@ namespace Environment
         private void OnCollisionEnter2D(Collision2D collision)
         {
 
-            if (collision.collider.CompareTag(OTHER_TAG))
+            if (collision.collider.CompareTag(PLAYER_TAG))
             {
                 // do something
 
