@@ -65,13 +65,13 @@ namespace Environment
         /// from the leftmost point of the window (starting point of the collision object)
         /// (distance which will be towards the left (Vector3.left))
         /// </summary>
-        /// <param name="_offsetX"></param>
-        public void SetUp(float _offsetX)
+        /// <param name="_offsetPositionX"></param>
+        public void SetUp(float _offsetPositionX)
         {
 
-            _collider.isTrigger = true;
+            //_collider.isTrigger = true;
             _rigidbody.bodyType = RigidbodyType2D.Kinematic;
-            SetPosition(_offsetX);
+            SetPosition(_offsetPositionX);
         
         }
 
@@ -80,14 +80,14 @@ namespace Environment
 
         #region Private methods
 
-        private void SetPosition(float _offsetX)
+        private void SetPosition(float _offsetPositionX)
         {
 
-            float positionXRelativeToTheWindow = Utilities.Screen.ScreenPositionX -
-                Utilities.Screen.ConvertPixelToUnits(Utilities.Screen.ScreenWidthInPixels * 0.5f) -
+            float positionXRelativeToTheWindow = Utilities.Screen.PositionX -
+                Utilities.MeasurementUnitConversion.ConvertPixelsToUnitsOnXAxis(Utilities.Screen.WidthInPixels * 0.5f) -
                 HalfSizeX;
 
-            Vector3 newPostion = new Vector3(positionXRelativeToTheWindow - _offsetX, 0, 0);
+            Vector3 newPostion = new Vector3(positionXRelativeToTheWindow - _offsetPositionX, 0, 0);
 
 
             _rigidbody.position = newPostion;

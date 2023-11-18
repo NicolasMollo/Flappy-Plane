@@ -25,10 +25,10 @@ namespace Environment
 
         [SerializeField]
         [Tooltip("Trigger collider")]
-        private Collider2D _collider = null;
-        public Collider2D Collider
+        private Collider2D triggerCollider = null;
+        public Collider2D TriggerCollider
         {
-            get => _collider;
+            get => triggerCollider;
         }
 
 
@@ -60,6 +60,16 @@ namespace Environment
 
 
         #region API
+
+        /// <summary>
+        /// Method that sets the ground pieces container controller.
+        /// </summary>
+        public void SetUp()
+        {
+
+            triggerCollider.isTrigger = true;
+        
+        }
 
         /// <summary>
         /// Method that deactivates the object.

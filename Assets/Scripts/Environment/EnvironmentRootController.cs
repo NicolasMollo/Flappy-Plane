@@ -79,12 +79,9 @@ namespace Environment
             environmentType = GameManager.Instance.EnvironmentType;
 
             groundController.SetUp(environmentType);
-            environmentCollisionObjectController.SetUp(groundController.GroundPiecesContainerControllers[0].SizeX + 
-                groundController.GroundPiecesContainerControllers[0].GroundPieceControllers[0].HalfSizeX);
+            environmentCollisionObjectController.SetUp(groundController.GroundPiecesContainerControllers[0].SizeX +
+                groundController.GroundPiecesContainerControllers[0].GroundPieceControllers[0].HalfSizeX * 0.5f);
 
-            //Utilities.Screen.PrintAllScreenProperties();
-
-            // AddListeners();
 
         }
 
@@ -95,27 +92,6 @@ namespace Environment
             groundController.UpdatePosition();
 
         }
-
-
-        //private void OnDestroy()
-        //{
-
-        //    RemoveListeners();
-
-        //}
-
-        //private void AddListeners()
-        //{
-
-        //    environmentCollisionObjectController.OnCollideWithMe += groundController.SetGroundObjectPosition;
-
-        //}
-        //private void RemoveListeners()
-        //{
-
-        //    environmentCollisionObjectController.OnCollideWithMe -= groundController.SetGroundObjectPosition;
-
-        //}
 
         #endregion
 

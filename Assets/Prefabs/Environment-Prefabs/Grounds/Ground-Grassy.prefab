@@ -203,7 +203,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -10.697064, y: -0.16832113}
@@ -235,7 +235,7 @@ MonoBehaviour:
   - {fileID: 2593209344504547805}
   - {fileID: 3969146451085651743}
   - {fileID: 3656731956785332732}
-  _collider: {fileID: 2472764789739489578}
+  triggerCollider: {fileID: 2472764789739489578}
 --- !u!1 &3298341677421362005
 GameObject:
   m_ObjectHideFlags: 0

@@ -517,7 +517,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -10.697064, y: -0.16832113}
@@ -549,4 +549,4 @@ MonoBehaviour:
   - {fileID: 1174276519354895002}
   - {fileID: 1200144522388557420}
   - {fileID: 7993491164555459905}
-  _collider: {fileID: 880310982699585990}
+  triggerCollider: {fileID: 880310982699585990}

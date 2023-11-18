@@ -163,8 +163,8 @@ namespace Environment
 
                 if (i == 0)
                 {
-                    groundPosition = new Vector3(Utilities.Screen.ScreenPositionX,
-                        Utilities.Screen.ScreenPositionY - Utilities.Screen.HalfScreenHeightInUnits/*Utilities.Screen.ConvertPixelToUnits(Utilities.Screen.HalfScreenHeightInPixels)*/ + groundPiecesContainerControllers[i].HalfSizeY,
+                    groundPosition = new Vector3(Utilities.Screen.PositionX,
+                        Utilities.Screen.PositionY - Utilities.Screen.HalfHeightInUnits + groundPiecesContainerControllers[i].HalfSizeY,
                         0);
                 }
                 else
@@ -176,6 +176,7 @@ namespace Environment
 
                 groundPiecesContainerControllers[i].transform.position = groundPosition;
                 groundPiecesContainerControllers[i].transform.rotation = _prefabGround.transform.rotation;
+                groundPiecesContainerControllers[i].SetUp();
 
             }
 

@@ -11,22 +11,22 @@ namespace Utilities
 
         #region Screen properties in pixels
 
-        public static int ScreenWidthInPixels
+        public static int WidthInPixels
         {
             get => UnityEngine.Screen.width;
         }
 
-        public static float HalfScreenWidthInPixels
+        public static float HalfWidthInPixels
         {
             get => UnityEngine.Screen.width / 2;
         }
 
-        public static int ScreenHeightInPixels
+        public static int HeightInPixels
         {
             get => UnityEngine.Screen.height;
         }
 
-        public static int HalfScreenHeightInPixels
+        public static int HalfHeightInPixels
         {
             get => UnityEngine.Screen.height / 2;
         }
@@ -35,123 +35,136 @@ namespace Utilities
 
         #region Screen properties in units
 
-        public static float ScreenWidthInUnits
+        /// <summary>
+        /// Conversion based on window width.
+        /// </summary>
+        public static float WidthInUnits
         {
-            get => Camera.main.orthographicSize * 2.0f * ScreenWidthInPixels / UnityEngine.Screen.width;
+            get => Camera.main.orthographicSize * 2.0f * WidthInPixels / UnityEngine.Screen.width;
         }
 
-        public static float HalfScreenWidthInUnits
+        /// <summary>
+        /// Conversion based on window width.
+        /// </summary>
+        public static float HalfWidthInUnits
         {
-            get => ScreenWidthInUnits * 0.5f;
+            get => WidthInUnits * 0.5f;
         }
 
-        public static float ScreenHeightInUnits
+        /// <summary>
+        /// Conversion based on window height.
+        /// </summary>
+        public static float HeightInUnits
         {
-            get => Camera.main.orthographicSize * 2.0f * ScreenHeightInPixels / UnityEngine.Screen.height;
+            get => Camera.main.orthographicSize * 2.0f * HeightInPixels / UnityEngine.Screen.height;
         }
 
-        public static float HalfScreenHeightInUnits
+        /// <summary>
+        /// Conversion based on window height.
+        /// </summary>
+        public static float HalfHeightInUnits
         {
-            get => ScreenHeightInUnits * 0.5f;
+            get => HeightInUnits * 0.5f;
         }
 
         #endregion
 
         #region Screen position
 
-        public static float ScreenPositionX
+        public static float PositionX
         {
             get => UnityEngine.Screen.safeArea.x;
         }
 
-        public static float ScreenPositionY
+        public static float PositionY
         {
             get => UnityEngine.Screen.safeArea.y;
         }
 
-        public static Vector2 ScreenPosition
+        public static Vector2 Position
         {
             get => UnityEngine.Screen.safeArea.position;
         }
 
         #endregion
 
+
         #region Debug
 
         public static void PrintScreenWidthInPixels()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen width in pixels is: {ScreenWidthInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen width in pixels is: {WidthInPixels}");
 
         }
 
         public static void PrintHalfScreenWidthInPixels()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Half screen width in pixels is: {HalfScreenWidthInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen width in pixels is: {HalfWidthInPixels}");
 
         }
 
         public static void PrintScreenHeightInPixels()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen height in pixels is: {ScreenHeightInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen height in pixels is: {HeightInPixels}");
 
         }
 
         public static void PrintHalfScreenHeightInPixels()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Half screen height in pixels is: {HalfScreenHeightInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen height in pixels is: {HalfHeightInPixels}");
 
         }
 
         public static void PrintScreenWidthInUnits()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen width in units is: {ScreenWidthInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen width in units is: {WidthInUnits}");
 
         }
 
         public static void PrintHalfScreenWidthInUnits()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Half screen width in units is: {HalfScreenWidthInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen width in units is: {HalfWidthInUnits}");
 
         }
 
         public static void PrintScreenHeightInUnits()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen height in units is: {ScreenHeightInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen height in units is: {HeightInUnits}");
 
         }
 
         public static void PrintHalfScreenHeightInUnits()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Half screen height in units is: {HalfScreenHeightInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen height in units is: {HalfHeightInUnits}");
 
         }
 
         public static void PrintScreenPositionX()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen position 'X' is: {ScreenPositionX}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen position 'X' is: {PositionX}");
 
         }
 
         public static void PrintScreenPositionY()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen position 'Y' is: {ScreenPositionY}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen position 'Y' is: {PositionY}");
 
         }
 
         public static void PrintScreenPosition()
         {
 
-            Debug.Log($"== UTILITIES.SCREEN == Screen position is: {ScreenPosition}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen position is: {Position}");
 
         }
 
@@ -159,46 +172,22 @@ namespace Utilities
         {
 
             Debug.Log("-------------------------------------------------------------------------------------");
-            Debug.Log($"== UTILITIES.SCREEN == Screen width in pixels is: {ScreenWidthInPixels}");
-            Debug.Log($"== UTILITIES.SCREEN == Half screen width in pixels is: {HalfScreenWidthInPixels}");
-            Debug.Log($"== UTILITIES.SCREEN == Screen height in pixels is: {ScreenHeightInPixels}");
-            Debug.Log($"== UTILITIES.SCREEN == Half screen height in pixels is: {HalfScreenHeightInPixels}");
-            Debug.Log($"== UTILITIES.SCREEN == Screen width in units is: {ScreenWidthInUnits}");
-            Debug.Log($"== UTILITIES.SCREEN == Half screen width in units is: {HalfScreenWidthInUnits}");
-            Debug.Log($"== UTILITIES.SCREEN == Screen height in units is: {ScreenHeightInUnits}");
-            Debug.Log($"== UTILITIES.SCREEN == Half screen height in units is: {HalfScreenHeightInUnits}");
-            Debug.Log($"== UTILITIES.SCREEN == Screen position 'X' is: {ScreenPositionX}");
-            Debug.Log($"== UTILITIES.SCREEN == Screen position 'Y' is: {ScreenPositionY}");
-            Debug.Log($"== UTILITIES.SCREEN == Screen position is: {ScreenPosition}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen width in pixels is: {WidthInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen width in pixels is: {HalfWidthInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen height in pixels is: {HeightInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen height in pixels is: {HalfHeightInPixels}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen width in units is: {WidthInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen width in units is: {HalfWidthInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen height in units is: {HeightInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Half screen height in units is: {HalfHeightInUnits}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen position 'X' is: {PositionX}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen position 'Y' is: {PositionY}");
+            Debug.Log($"== UTILITIES.SCREEN == Screen position is: {Position}");
             Debug.Log("-------------------------------------------------------------------------------------");
 
         }
 
         #endregion
-
-
-        public static float ConvertPixelToUnits(float pixelSize)
-        {
-            // Ottieni le coordinate del punto in basso a sinistra dello schermo in pixel
-            Vector3 screenBottomLeft = new Vector3(0, 0, 0);
-
-            // Converti le coordinate in unità del mondo
-            Vector3 worldBottomLeft = Camera.main.ScreenToWorldPoint(screenBottomLeft);
-
-            // Ottieni le coordinate del punto in alto a destra dello schermo in pixel
-            Vector3 screenTopRight = new Vector3(UnityEngine.Screen.width, UnityEngine.Screen.height, 0);
-
-            // Converti le coordinate in unità del mondo
-            Vector3 worldTopRight = Camera.main.ScreenToWorldPoint(screenTopRight);
-
-            // Calcola la larghezza della finestra in unità
-            float windowWidthInUnits = Mathf.Abs(worldTopRight.x - worldBottomLeft.x);
-
-            // Calcola la grandezza in unità
-            float sizeInUnits = pixelSize / UnityEngine.Screen.width * windowWidthInUnits;
-
-            return sizeInUnits;
-        }
 
     }
 
