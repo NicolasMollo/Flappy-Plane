@@ -163,7 +163,7 @@ namespace Environment
 
                 if (i == 0)
                 {
-                    groundPosition = new Vector3(Utilities.Screen.PositionX,
+                    groundPosition = new Vector3(Utilities.Screen.PositionX - groundPiecesContainerControllers[i].HalfSizeX,
                         Utilities.Screen.PositionY - Utilities.Screen.HalfHeightInUnits + groundPiecesContainerControllers[i].HalfSizeY,
                         0);
                 }

@@ -40,7 +40,7 @@ namespace Managers
         } = null;
 
 
-        private EnvironmentType environmentType = EnvironmentType.Rocky;
+        private EnvironmentType environmentType = EnvironmentType.Grassy;
         public EnvironmentType EnvironmentType
         {
             get => environmentType;

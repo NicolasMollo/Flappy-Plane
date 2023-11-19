@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 
@@ -66,18 +63,13 @@ namespace Environment
 
             if (collision.collider.CompareTag(PLAYER_TAG))
             {
+
                 // do something
 
 
                 OnCollideWithMe?.Invoke(groundPieceType);
 
             }
-            //else if (collision.collider.CompareTag("EnvironmentCollisionObject"))
-            //{
-            
-            //    gameObject.transform.parent.gameObject.SetActive(false);
-            
-            //}
 
         }
 

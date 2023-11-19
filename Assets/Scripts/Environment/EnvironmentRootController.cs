@@ -41,7 +41,7 @@ namespace Environment
         [SerializeField]
         private ObstaclesController obstaclesController = null;
         [SerializeField]
-        private ParallaxController parallaxController = null;
+        private BackgroundController backgroundController = null;
         [SerializeField]
         private InteractablesController interactablesController = null;
         [SerializeField]
@@ -55,9 +55,9 @@ namespace Environment
         {
             get => obstaclesController;
         }
-        public ParallaxController ParallaxController
+        public BackgroundController BackgroundController
         {
-            get => parallaxController;
+            get => backgroundController;
         }
         public InteractablesController InteractablesController
         {
@@ -79,6 +79,7 @@ namespace Environment
             environmentType = GameManager.Instance.EnvironmentType;
 
             groundController.SetUp(environmentType);
+            backgroundController.SetUp(environmentType);
             environmentCollisionObjectController.SetUp(groundController.GroundPiecesContainerControllers[0].SizeX +
                 groundController.GroundPiecesContainerControllers[0].GroundPieceControllers[0].HalfSizeX * 0.5f);
 
@@ -90,6 +91,7 @@ namespace Environment
         {
 
             groundController.UpdatePosition();
+            backgroundController.UpdatePositions();
 
         }
 
