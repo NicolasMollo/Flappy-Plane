@@ -15,14 +15,15 @@ namespace Environment
 
         [SerializeField]
         [Tooltip("Trigger collider")]
-        private Collider2D triggerCollider = null;
-
-        public Action/*<BackgroundPieceController>*/ OnCollideWithMe = null;
+        private BackgroundTriggerColliderController triggerCollider = null;
+        public BackgroundTriggerColliderController TriggerCollider
+        {
+            get => triggerCollider;
+        }
 
         #region Constants
 
         private const string SORTINGLAYER_NAME = "Background";
-        private const string ENVIRONMENTCOLLISIONOBJECT_TAG = "EnvironmentCollisionObject";
 
         #endregion
 
@@ -36,6 +37,37 @@ namespace Environment
         #endregion
 
 
+        #region Lifecycle
+
+        private void AddListeners()
+        {
+
+            triggerCollider.OnCollideWithEnvironmentCollisionObject += DeactivateMe;
+
+        }
+
+
+        private void OnDestroy()
+        {
+            RemoveListeners();
+        }
+
+        private void RemoveListeners()
+        {
+        
+            triggerCollider.OnCollideWithEnvironmentCollisionObject -= DeactivateMe;
+
+        }
+
+        private void DeactivateMe()
+        {
+
+            gameObject.SetActive(false);
+
+        }
+
+        #endregion
+
 
         #region API
 
@@ -47,6 +79,7 @@ namespace Environment
         public void SetUp(int _sortingOrder)
         {
 
+            // SpriteRenderer
             spriteRenderer.sortingLayerName = SORTINGLAYER_NAME;
             spriteRenderer.sortingOrder = _sortingOrder;
             spriteRenderer.drawMode = SpriteDrawMode.Sliced;
@@ -54,7 +87,11 @@ namespace Environment
                                                Utilities.Screen.HeightInUnits,
                                                transform.localScale.z);
 
-            triggerCollider.isTrigger = true;
+            // Trigger collider
+            triggerCollider.SetUp(spriteRenderer);
+
+            // Event subscription
+            AddListeners();
 
         }
 
@@ -72,34 +109,6 @@ namespace Environment
             Vector3 velocity = direction * calculatedMovementSpeed;
 
             transform.position += velocity;
-
-        }
-
-        #endregion
-
-
-        #region Private methods
-
-        private void DeactivateMe()
-        {
-
-            gameObject.SetActive(false);
-
-        }
-
-        #endregion
-
-
-        #region Collision events
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-
-            if (collision.CompareTag(ENVIRONMENTCOLLISIONOBJECT_TAG))
-            {
-                DeactivateMe();
-                OnCollideWithMe?.Invoke(/*this*/);
-            }
 
         }
 

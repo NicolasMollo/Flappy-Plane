@@ -1,10 +1,5 @@
 using Managers;
-using Sirenix.Utilities;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Device;
-using UnityEngine.Rendering;
 
 
 namespace Environment
@@ -45,7 +40,9 @@ namespace Environment
         [SerializeField]
         private InteractablesController interactablesController = null;
         [SerializeField]
-        private EnvironmentCollisionObjectController environmentCollisionObjectController = null;
+        private EnvironmentCollisionObjectController groundCollisionObjectController = null;
+        [SerializeField]
+        private EnvironmentCollisionObjectController backgroundCollisionObjectController = null;
 
         public GroundController GroundController
         {
@@ -63,9 +60,13 @@ namespace Environment
         {
             get => interactablesController;
         }
-        public EnvironmentCollisionObjectController EnvironmentCollisionObjectController
+        public EnvironmentCollisionObjectController GroundCollisionObjectController
         {
-            get => environmentCollisionObjectController;
+            get => groundCollisionObjectController;
+        }
+        public EnvironmentCollisionObjectController BackgroundCollisionObjectController
+        {
+            get => backgroundCollisionObjectController;
         }
 
         #endregion
@@ -78,11 +79,17 @@ namespace Environment
 
             environmentType = GameManager.Instance.EnvironmentType;
 
+            // Ground
             groundController.SetUp(environmentType);
-            backgroundController.SetUp(environmentType);
-            environmentCollisionObjectController.SetUp(groundController.GroundPiecesContainerControllers[0].SizeX +
+            groundCollisionObjectController.SetUp(groundController.GroundPiecesContainerControllers[0].SizeX +
                 groundController.GroundPiecesContainerControllers[0].GroundPieceControllers[0].HalfSizeX * 0.5f);
 
+            // Background
+            backgroundController.SetUp(environmentType);
+            backgroundCollisionObjectController.SetUp(backgroundController.BackgroundPiecesContainerControllers[0].SkySize.x +
+                backgroundController.BackgroundPiecesContainerControllers[0].SkyController.TriggerCollider.Size.x);
+
+            // Obstacles
 
         }
 

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 namespace Environment
 {
@@ -76,9 +73,9 @@ namespace Environment
 
             for (int i = 0; i < BackgroundPiecesContainerControllers.Length; i++)
             {
-                backgroundPiecesContainerControllers[i].SkyController.OnCollideWithMe += SetSkyObjectsPositions;
-                backgroundPiecesContainerControllers[i].CloudsController.OnCollideWithMe += SetCloudObjectsPositions;
-                backgroundPiecesContainerControllers[i].MountainsController.OnCollideWithMe += SetMountainsPositions;
+                backgroundPiecesContainerControllers[i].SkyController.TriggerCollider.OnCollideWithEnvironmentCollisionObject += SetSkyObjectsPositions;
+                backgroundPiecesContainerControllers[i].CloudsController.TriggerCollider.OnCollideWithEnvironmentCollisionObject += SetCloudObjectsPositions;
+                backgroundPiecesContainerControllers[i].MountainsController.TriggerCollider.OnCollideWithEnvironmentCollisionObject += SetMountainsPositions;
             }
 
         }
@@ -96,9 +93,9 @@ namespace Environment
 
             for (int i = 0; i < BackgroundPiecesContainerControllers.Length; i++)
             {
-                backgroundPiecesContainerControllers[i].SkyController.OnCollideWithMe -= SetSkyObjectsPositions;
-                backgroundPiecesContainerControllers[i].CloudsController.OnCollideWithMe -= SetCloudObjectsPositions;
-                backgroundPiecesContainerControllers[i].MountainsController.OnCollideWithMe -= SetMountainsPositions;
+                backgroundPiecesContainerControllers[i].SkyController.TriggerCollider.OnCollideWithEnvironmentCollisionObject -= SetSkyObjectsPositions;
+                backgroundPiecesContainerControllers[i].CloudsController.TriggerCollider.OnCollideWithEnvironmentCollisionObject -= SetCloudObjectsPositions;
+                backgroundPiecesContainerControllers[i].MountainsController.TriggerCollider.OnCollideWithEnvironmentCollisionObject -= SetMountainsPositions;
             }
 
         }
@@ -284,8 +281,6 @@ namespace Environment
         #endregion
 
         #endregion
-
-
 
     }
 

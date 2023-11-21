@@ -1,8 +1,3 @@
-using Sirenix.Utilities;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -69,7 +64,6 @@ namespace Environment
         public void SetUp(float _offsetPositionX)
         {
 
-            //_collider.isTrigger = true;
             _rigidbody.bodyType = RigidbodyType2D.Kinematic;
             SetPosition(_offsetPositionX);
         

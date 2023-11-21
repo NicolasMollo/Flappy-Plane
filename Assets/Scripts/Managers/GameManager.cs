@@ -1,9 +1,5 @@
 using Database;
 using Environment;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -40,7 +36,7 @@ namespace Managers
         } = null;
 
 
-        private EnvironmentType environmentType = EnvironmentType.Grassy;
+        private EnvironmentType environmentType = EnvironmentType.Dirty;
         public EnvironmentType EnvironmentType
         {
             get => environmentType;

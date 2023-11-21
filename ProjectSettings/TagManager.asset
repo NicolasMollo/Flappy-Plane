@@ -6,15 +6,16 @@ TagManager:
   tags:
   - Ground
   - EnvironmentCollisionObject
+  - Background
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Background
+  - Obstacles
   - 
   - 
   - 
