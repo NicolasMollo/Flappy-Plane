@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3298341676423409529}
   - component: {fileID: 3298341676423409528}
   - component: {fileID: 3969146451085651743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_01-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 3298341677311139144}
   - component: {fileID: 2472764789739489578}
   - component: {fileID: 3820974284273348718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground-Grassy
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3298341677421362007}
   - component: {fileID: 3298341677421362006}
   - component: {fileID: 3656731956785332732}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_02-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 3298341678204547381}
   - component: {fileID: 3298341678204547380}
   - component: {fileID: 2593209344504547805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_00-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}

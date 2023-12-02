@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4532410277427005088}
   - component: {fileID: 4532410277427005089}
   - component: {fileID: 4554181464980398020}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_00-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4532410277507381757}
   - component: {fileID: 4532410277507381758}
   - component: {fileID: 4234789664199711559}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_01-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 4532410277716421916}
   - component: {fileID: 1177197686179013553}
   - component: {fileID: 838918959068004601}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground-Rocky
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 4532410278689210469}
   - component: {fileID: 4532410278689210470}
   - component: {fileID: 7174450218391034623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_02-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}

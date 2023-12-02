@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4194279926144373797}
   - component: {fileID: 4194279926144373796}
   - component: {fileID: 3031321757887144745}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_00-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4194279926357251575}
   - component: {fileID: 4194279926357251574}
   - component: {fileID: 1999181571929060025}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_02-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 4194279926481713736}
   - component: {fileID: 2288935512229644509}
   - component: {fileID: 2571125169905191809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground-Snowy
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 4194279926638717351}
   - component: {fileID: 4194279926638717350}
   - component: {fileID: 3992415906437660809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piece_01-Graphic
   m_TagString: Ground
   m_Icon: {fileID: 0}
