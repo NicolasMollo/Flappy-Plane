@@ -36,7 +36,7 @@ namespace Managers
         } = null;
 
 
-        private EnvironmentType environmentType = EnvironmentType.Snowy;
+        private EnvironmentType environmentType = EnvironmentType.Rocky;
         public EnvironmentType EnvironmentType
         {
             get => environmentType;
