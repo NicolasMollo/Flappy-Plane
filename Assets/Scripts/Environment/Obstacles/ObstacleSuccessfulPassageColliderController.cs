@@ -43,9 +43,16 @@ namespace Environment
         public void SetUp(float _colliderOffsetX = 1f)
         {
 
+            // Collider
             bool colliderIsTrigger = true;
             _collider.isTrigger = colliderIsTrigger;
             _collider.offset = new Vector2(_colliderOffsetX, _collider.offset.y);
+
+            BoxCollider2D boxCollider = _collider as BoxCollider2D;
+            if (boxCollider != null)
+            {
+                boxCollider.size = new Vector3(boxCollider.bounds.size.x, Utilities.Screen.HeightInUnits);
+            }
 
         }
 

@@ -1,3 +1,4 @@
+using TreeEditor;
 using UnityEngine;
 
 
@@ -47,9 +48,24 @@ namespace Environment
         /// </summary>
         public void SetUp()
         {
-        
 
-        
+            float upObstacleYPositionOffset = Utilities.Screen.PositionY +
+                Utilities.Screen.HalfHeightInUnits -
+                upObstaclePieceController.HalfSize.y;
+            Vector3 upObstaclePiecePosition = new Vector3(upObstaclePieceController.transform.position.x,
+                upObstacleYPositionOffset);
+
+            float downObstacleYPositionOffset = Utilities.Screen.PositionY -
+                Utilities.Screen.HalfHeightInUnits +
+                 downObstaclePieceController.HalfSize.y;
+            Vector3 downObstaclePiecePosition = new Vector3(downObstaclePieceController.transform.position.x,
+                downObstacleYPositionOffset);
+
+
+            upObstaclePieceController.SetUp(upObstaclePiecePosition);
+            downObstaclePieceController.SetUp(downObstaclePiecePosition);
+            successfulPassageColliderController.SetUp();
+
         }
 
         /// <summary>

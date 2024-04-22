@@ -10,7 +10,16 @@ namespace Environment
     public class ObstaclesController : MonoBehaviour
     {
 
+        [SerializeField]
+        private ObstaclePiecesContainerController containerController = null;
 
+
+        private void Start()
+        {
+
+            containerController.SetUp();
+
+        }
 
     }
 

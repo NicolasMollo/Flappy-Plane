@@ -34,16 +34,23 @@ namespace Environment
 
         #region API
 
-        public void SetUp(SpriteRenderer _spriteRenderer/*, Vector3 _position*/)
+        public void SetUp(SpriteRenderer _spriteRenderer)
         {
 
-            _collider.isTrigger = true;
+            bool colliderIsTrigger = true;
+            _collider.isTrigger = colliderIsTrigger;
             transform.position = new Vector3(
                 _spriteRenderer.gameObject.transform.position.x - (_spriteRenderer.size.x * 0.5f + HalfSize.x),
                 _spriteRenderer.gameObject.transform.position.y,
                 _spriteRenderer.gameObject.transform.position.z);
 
-            //_position
+        }
+
+        public void SetUp()
+        {
+
+            bool colliderIsTrigger = true;
+            _collider.isTrigger = colliderIsTrigger;
 
         }
 
